@@ -72,16 +72,18 @@ You should then see the Debian installer.  Select plain graphical installer
 
 ![images/debian_install.png](images/debian_install.png)
 
-Go through the debian installer,  I used the following settings for the partition.
+Go through the debian installer,  I used the following settings for the partition.  
 
-For now, only configure `sda`:
+You are free to define your own partition scheme...just make sure you leave `sdb` alone...we will use that for our testing
+
+Anyway, i configured configure `sda`:
 
 * Manual Partitioning:
 
 * `sda`
   - `sda1` 500MB  ESP System Partition (EFI boot)
   - `sda2` 500MB  Mountpoint `/boot`
-  - `sda3`: Logical Volume Group `sda3_crypt`:
+  - `sda3`: Logical Volume Group as encrypted:  Name: `sda3_crypt`:
      - `vg-root`: 1200MB mount `/`   [root Partition]
      - `vg-swap` 800MB  [swap Partition]
      - `vg-app` 222MB  [swap Partition]
@@ -93,7 +95,7 @@ Configure the rest of the disk as an Encrypted Volume (`crypt`), pick any passph
 
 ![images/sda2.png](images/sda2.png)
 
-Now configure LVM on the encrypted partition on the remaining space on `sda`:
+Now configure LVM on the _encrypted partition_ on the remaining space on `sda`:
 
 - Create Volume Group: `sda3_crypt`
 
@@ -147,7 +149,7 @@ Just type in the crypt password...you'll then suddenly see the
 ![images/debian.png](images/debian.png)
 
 
-yesssss!
+> **yesssss!**
 
 
 
